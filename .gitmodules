@@ -1,0 +1,9 @@
+[submodule "service_discovery"]
+	path = service_discovery
+	url = https://github.com/domiebett/service_discovery
+[submodule "food_service"]
+	path = food_service
+	url = https://github.com/domiebett/food_service
+[submodule "api_gateway"]
+	path = api_gateway
+	url = https://github.com/domiebett/api_gateway
