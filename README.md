@@ -18,6 +18,6 @@ In case you ran git clone without the recursive mode or submodule folders are em
 > $ git submodule update --init --recursive
 
 Once done, run the application:
-> $ docker compose up
+> $ docker-compose up
 
 You can access the application endpoints by connecting to the gateway on `http://localhost:3000`
