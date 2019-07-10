@@ -1,0 +1,9 @@
+[submodule "services/api_gateway"]
+	path = services/api_gateway
+	url = https://github.com/domiebett/api_gateway
+[submodule "services/food_service"]
+	path = services/food_service
+	url = https://github.com/domiebett/food_service
+[submodule "services/timetable_service"]
+	path = services/timetable_service
+	url = https://github.com/domiebett/timetable_service
