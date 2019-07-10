@@ -1,0 +1,7 @@
+version: "2"
+services:
+  zuul:
+    container_name: zuul
+    build: ./
+    ports:
+      - "9092:9092"

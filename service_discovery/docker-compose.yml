@@ -1,0 +1,21 @@
+version: "2"
+services:
+  eureka:
+    container_name: eureka
+    build: ./eureka/
+    ports:
+      - "9091:9091"
+    networks:
+      - budget_app_network
+  zuul:
+    container_name: zuul
+    build: ./zuul/
+    ports:
+      - "9092:9092"
+    depends_on:
+      - eureka
+    networks:
+      - budget_app_network
+networks:
+  budget_app_network:
+    external: true

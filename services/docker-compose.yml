@@ -1,0 +1,29 @@
+version: "2"
+services:
+  nginx:
+    restart: always
+    build: ./api_gateway/nginx/
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - api_gateway
+    links:
+      - api_gateway:api_gateway
+    networks:
+      - budget_app_network
+  api_gateway:
+    container_name: api_gateway
+    build: ./api_gateway/
+    restart: always
+    networks:
+      - budget_app_network
+  food_service:
+    container_name: food_service
+    build: ./food_service/
+    restart: always
+    networks:
+      - budget_app_network
+networks:
+  budget_app_network:
+    external: true

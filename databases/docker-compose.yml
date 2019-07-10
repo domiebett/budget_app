@@ -1,0 +1,19 @@
+version: "2"
+services:
+  food_service_db:
+    container_name: food_service_db
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: food_service_password
+      MYSQL_DATABASE: food_service
+    ports:
+      - "3307:3306"
+    volumes:
+      - "./data/food_service_db:/var/lib/mysql"
+    networks:
+      - budget_app_network
+networks:
+  budget_app_network:
+    external: true
