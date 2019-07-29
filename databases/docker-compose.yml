@@ -14,6 +14,20 @@ services:
       - "./data/food_service_db:/var/lib/mysql"
     networks:
       - budget_app_network
+  timetable_service_db:
+    container_name: timetable_service_db
+    image: mongo:4
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: timetable_service_password
+    #   MONGO_INITDB_DATABASE: timetable
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/timetable_service_db:/data/db
+    networks:
+      - budget_app_network
 networks:
   budget_app_network:
     external: true
