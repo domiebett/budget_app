@@ -1,0 +1,17 @@
+{
+  "name": "@bit/domiebett.budget_app.logging",
+  "version": "1.0.0",
+  "homepage": "https://bit.dev/domiebett/budget_app/logging",
+  "main": "dist/Logging.js",
+  "dependencies": {
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/typescript@3.0.5"
+    }
+  }
+}

@@ -3,6 +3,9 @@ FROM maven:3.6.1-jdk-8
 RUN mkdir -p /usr/src/eureka
 WORKDIR /usr/src/eureka
 
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
 COPY . /usr/src/eureka
 RUN mvn clean install
 

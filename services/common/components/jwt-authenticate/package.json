@@ -1,0 +1,22 @@
+{
+  "name": "@bit/domiebett.budget_app.jwt-authenticate",
+  "version": "1.1.2",
+  "homepage": "https://bit.dev/domiebett/budget_app/jwt-authenticate",
+  "main": "dist/JWTAuthenticate.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "routing-controllers": "^0.7.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/jsonwebtoken": "^8.3.3"
+  },
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/typescript@3.0.25"
+    }
+  }
+}

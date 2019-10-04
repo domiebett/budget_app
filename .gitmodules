@@ -7,3 +7,6 @@
 [submodule "services/timetable_service"]
 	path = services/timetable_service
 	url = https://github.com/domiebett/timetable_service
+[submodule "services/user_service"]
+	path = services/user_service
+	url = https://github.com/domiebett/user_service

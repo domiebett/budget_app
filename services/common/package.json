@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@bit/domiebett.budget_app.ip-resolver": "file:./components/ip-resolver",
+    "@bit/domiebett.budget_app.logging": "file:./components/logging",
+    "@bit/domiebett.budget_app.jwt-authenticate": "file:./components/jwt-authenticate"
+  }
+}
