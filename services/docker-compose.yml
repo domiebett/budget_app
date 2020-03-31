@@ -1,35 +1,42 @@
-version: "2"
+version: '2.0'
 services:
-  nginx:
-    restart: always
-    build: ./api_gateway/nginx/
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes_from:
-      - api_gateway
-    links:
-      - api_gateway:api_gateway
-    networks:
-      - budget_app_network
-  api_gateway:
-    container_name: api_gateway
-    build: ./api_gateway/
-    restart: always
-    networks:
-      - budget_app_network
-  food_service:
-    container_name: food_service
-    build: ./food_service/
-    restart: always
-    networks:
-      - budget_app_network
-  # timetable_service:
-  #   container_name: timetable_service
-  #   build: ./timetable_service/
-  #   restart: always
-  #   networks:
-  #     - budget_app_network
+    # services
+    food_service:
+        container_name: food_service
+        build: ./food_service/
+        restart: always
+        ports:
+            - '3001:3000'
+        command: npm run dev
+        volumes:
+            - ./food_service/:/usr/src/app
+            - /usr/src/app/node_modules
+        networks:
+            - budget_app_network
+    user_service:
+        container_name: user_service
+        build: ./user_service/
+        restart: always
+        ports:
+            - '3002:3000'
+        command: npm run dev
+        volumes:
+            - ./user_service/:/usr/src/app
+            - /usr/src/app/node_modules
+        networks:
+            - budget_app_network
+    timetable_service:
+        container_name: timetable_service
+        build: ./timetable_service/
+        restart: always
+        ports:
+            - '3003:3000'
+        command: npm run dev
+        volumes:
+            - ./timetable_service/:/usr/src/app
+            - /usr/src/app/node_modules
+        networks:
+            - budget_app_network
 networks:
-  budget_app_network:
-    external: true
+    budget_app_network:
+        external: true
