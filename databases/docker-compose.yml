@@ -1,31 +1,18 @@
 version: "2"
 services:
-  food_service_db:
-    container_name: food_service_db
+  budget_app_db:
+    container_name: budget_app_db
     image: mysql:8.0
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: food_service_password
-      MYSQL_DATABASE: food_service
+      MYSQL_ROOT_PASSWORD: budgetapp_db_password
+      MYSQL_DATABASE: budget_app
     ports:
       - "3307:3306"
     volumes:
-      - "./data/food_service_db:/var/lib/mysql"
-    networks:
-      - budget_app_network
-  timetable_service_db:
-    container_name: timetable_service_db
-    image: mongo:4
-    # environment:
-    #   MONGO_INITDB_ROOT_USERNAME: root
-    #   MONGO_INITDB_ROOT_PASSWORD: timetable_service_password
-    #   MONGO_INITDB_DATABASE: timetable
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./data/timetable_service_db:/data/db
+      - "./data:/var/lib/mysql"
+      - "./docker/provision/mysql/init:/docker-entrypoint-initdb.d"
     networks:
       - budget_app_network
 networks:
