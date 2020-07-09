@@ -13,71 +13,24 @@ services:
             - '3307:3306'
         volumes:
             - './databases/data:/var/lib/mysql'
-            - './databases/docker/provision/mysql/init:/docker-entrypoint-initdb.d'
         networks:
             - budget_app_network
 
-    # service discovery
-    eureka:
-        container_name: eureka
-        build: ./service_discovery/eureka/
+    budget_app:
+        container_name: budget_app
+        build: ./app/
+        restart: always
         ports:
-            - '9091:9091'
-        networks:
-            - budget_app_network
-    zuul:
-        container_name: zuul
-        build: ./service_discovery/zuul/
-        ports:
-            - '9092:9092'
+            - '3000:3000'
+        command: npm run dev
+        volumes:
+            - ./app/:/usr/src/app
+            - /usr/src/app/node_modules
         depends_on:
-            - eureka
+          - budget_app_db
         networks:
             - budget_app_network
 
-    services
-    food_service:
-        container_name: food_service
-        build: ./services/food_service/
-        restart: always
-        ports:
-            - '3001:3000'
-        command: npm run dev
-        volumes:
-            - ./services/food_service/:/usr/src/app
-            - /usr/src/app/node_modules
-        depends_on:
-            - eureka
-        networks:
-            - budget_app_network
-    user_service:
-        container_name: user_service
-        build: ./services/user_service/
-        restart: always
-        ports:
-            - '3002:3000'
-        command: npm run dev
-        volumes:
-            - ./services/user_service/:/usr/src/app
-            - /usr/src/app/node_modules
-        depends_on:
-            - eureka
-        networks:
-            - budget_app_network
-    timetable_service:
-        container_name: timetable_service
-        build: ./services/timetable_service/
-        restart: always
-        ports:
-            - '3003:3000'
-        command: npm run dev
-        volumes:
-            - ./services/timetable_service/:/usr/src/app
-            - /usr/src/app/node_modules
-        depends_on:
-            - eureka
-        networks:
-            - budget_app_network
 networks:
     budget_app_network:
         external: true
