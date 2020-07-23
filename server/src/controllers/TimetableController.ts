@@ -1,7 +1,7 @@
-import {Authorized, Body, CurrentUser, Get, JsonController, Param, Post} from "routing-controllers";
-import {TimetableAgent} from "../data/agents/TimetableAgent";
-import {ITimetable} from "../business/interfaces/ITimetable";
-import {User} from "../data/entities/User";
+import { Authorized, Body, CurrentUser, Get, JsonController, Param, Post } from "routing-controllers";
+import { ITimetable } from "../business/interfaces/ITimetable";
+import { TimetableAgent } from "../data/agents/TimetableAgent";
+import { User } from "../data/entities/User";
 
 @JsonController('/timetables')
 export class TimetableController {

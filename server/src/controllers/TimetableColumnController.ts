@@ -1,8 +1,8 @@
-import {Authorized, Body, CurrentUser, Get, JsonController, Param, Post} from "routing-controllers";
-import {TimetableColumnAgent} from "../data/agents/TimetableColumnAgent";
-import {User} from "../data/entities/User";
-import {ITimetableColumn} from "../business/interfaces/ITimetableColumn";
-import {TimetableAgent} from "../data/agents/TimetableAgent";
+import { Authorized, Body, CurrentUser, Get, JsonController, Param, Post } from "routing-controllers";
+import { ITimetableColumn } from "../business/interfaces/ITimetableColumn";
+import { TimetableAgent } from "../data/agents/TimetableAgent";
+import { TimetableColumnAgent } from "../data/agents/TimetableColumnAgent";
+import { User } from "../data/entities/User";
 
 @JsonController('/timetables/:timetableId/columns')
 export class TimetableColumnController {

@@ -1,24 +1,23 @@
 import * as jwt from 'jsonwebtoken';
-import {Request, Response} from "express";
-import {Body, JsonController, Post, Req, Res} from "routing-controllers";
-import {UserAgent} from "../data/agents/UserAgent";
-import {IUser} from "../business/interfaces";
-import {User} from "../data/entities/User";
-import {AuthorizationException} from "../business/exceptions";
+import { Body, JsonController, Post } from "routing-controllers";
+import { AuthorizationException } from "../business/exceptions";
+import { IUser } from "../business/interfaces";
+import { UserAgent } from "../data/agents/UserAgent";
+import { User } from "../data/entities/User";
 
 @JsonController('/auth')
 export class AuthController {
     constructor(private userAgent: UserAgent) { }
 
     @Post('/signup')
-    async signup(@Body() requestBody: IUser, @Req() req: Request, @Res() res: Response) {
+    async signup(@Body() requestBody: IUser) {
         await this.userAgent.createUser(requestBody);
 
         return { message: 'Sign Up successful...!!', success: true };
     }
 
     @Post('/signin')
-    async signin(@Body() requestBody: IUser, @Req() req: Request, @Res() res: Response) {
+    async signin(@Body() requestBody: IUser) {
         const { email, password } = requestBody;
         const user: User = await this.userAgent.getUserByEmailWithPassword(email);
 

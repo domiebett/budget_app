@@ -6,7 +6,6 @@ import * as health from 'express-ping';
 import {useExpressServer, useContainer as routeUseContainer, Action} from "routing-controllers";
 import { Container} from "typedi";
 import { Logger } from '../business/common/Logger';
-import {AuthController} from "../controllers/AuthController";
 import {Server} from "http";
 import {getCurrentUser, getToken, isValidToken} from "../business/common/JWTAuth";
 
@@ -51,7 +50,7 @@ export class Express {
     }
 
     errorHandler() {
-        return (req, res, next) => {
+        return (req: express.Request, res: express.Response, next) => {
             if (!res.headersSent) {
                 return res.status(404).send({
                     message: `${req.method} for route: "${req.url}" not found.`,

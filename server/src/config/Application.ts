@@ -1,4 +1,3 @@
-import { Application as App } from 'express';
 import { Express } from './Express';
 import { Connection } from 'typeorm';
 import { Logger } from '../business/common/Logger';
