@@ -23,7 +23,7 @@ export class ColumnDayMealController {
     async appendAMealToColumn(@CurrentUser() currentUser: User, @Param('columnId') columnId: number, @Param('dayId') dayId: number, @Param('mealId') mealId: number) {
         const { column, day } = await this.getColumnAndDay(currentUser, columnId, dayId);
 
-        const meal = await this.mealAgent.getMeal(currentUser, dayId);
+        const meal = await this.mealAgent.getMeal(currentUser, mealId);
         if (!meal) {
             throw new NotFoundError(`Meal with id ${mealId} doesnt exist`);
         }
