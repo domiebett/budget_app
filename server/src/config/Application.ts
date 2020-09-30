@@ -1,6 +1,6 @@
 import { Express } from './Express';
 import { Connection } from 'typeorm';
-import { Logger } from '../business/common/Logger';
+import { Logger } from '../business/lib/Logger';
 import {Http2Server} from "http2";
 import { DatabaseAdapter } from "../data/adapter/DatabaseAdapter";
 import {Server} from "http";

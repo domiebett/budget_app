@@ -2,12 +2,11 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
-import * as health from 'express-ping';
 import {useExpressServer, useContainer as routeUseContainer, Action} from "routing-controllers";
 import { Container} from "typedi";
-import { Logger } from '../business/common/Logger';
+import { Logger } from '../business/lib/Logger';
 import {Server} from "http";
-import {getCurrentUser, getToken, isValidToken} from "../business/common/JWTAuth";
+import {getCurrentUser, getToken, isValidToken} from "../business/lib/JWTAuth";
 
 export class Express {
     app: express.Application;
@@ -17,7 +16,6 @@ export class Express {
         this.logger = new Logger();
         this.app = express();
         this.app.use(cors());
-        this.app.use(health.ping());
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({extended: false}));
 
